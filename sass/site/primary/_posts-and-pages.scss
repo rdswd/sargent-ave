@@ -1,0 +1,162 @@
+.sticky {
+	display: block;
+}
+
+.hentry {
+	margin: 0 0 1.5em;
+}
+.home.page .hentry{
+	margin: 0;
+}
+.blog .hentry,
+.archive .hentry,
+.featured .hentry{
+	margin: 0;
+	// 4 columns would be 360
+	max-width: 100%;
+	.entry-content{  
+		padding: 15px 15px 0px;
+	}
+	@include bp(baby){
+		margin: 0 auto;
+		max-width: none;
+		// 6 column + gutters = 540px
+		@include columns(6);
+	}
+	@include bp(toddler) {
+		// 8 column + gutters = 720px
+		float: left;
+		@include columns(4);
+	}
+	@include bp(teen){
+		// 10 column + gutters = 900px
+		@include columns(5);
+		.entry-content{
+			padding: 15px;
+		}
+	}
+	@include bp(adult){
+		// 12 column * gutters = 1080px
+		@include columns(6);
+	}
+}
+.featured-wrapper{
+	background: $dblue;
+	color: #fff;
+	height: 0;
+	margin: 0px;
+	overflow: hidden;
+	padding-bottom: 55%;
+	position: relative;
+	.wp-post-image{
+		height: auto;
+		@include transition(.3s, transform, ease-in);
+		position: absolute;
+		width: 100%;
+		z-index: 1;
+	}
+	.entry-header{
+		z-index: 2;	
+	}
+	.action{
+		position: relative;
+		text-align: center;
+	}
+}
+.featured-wrapper:hover .wp-post-image{
+	transform: translate3d( 0px, 285px, 0 );
+	-webkit-transform: translate3d( 0px, 285px, 0 );
+	@include bp(toddler) {
+		transform: translate3d( 0px, 192px, 0 );
+		-webkit-transform: translate3d( 0px, 192px, 0 );
+	}
+	@include bp(teen){
+		transform: translate3d( 0px, 242px, 0 );
+		-webkit-transform: translate3d( 0px, 242px, 0 );
+	}
+	@include bp(adult){
+		transform: translate3d( 0px, 291px, 0 );
+		-webkit-transform: translate3d( 0px, 291px, 0 );
+	}
+}
+.small-feature{
+	background: #f3f3f4;
+	padding-top: 48px;
+	padding-bottom: 72px;
+	text-align: center;
+	.wrapper{
+		@include padding();	
+	}
+}
+.byline, 
+.updated {
+	display: none;
+}
+
+.single .byline,
+.group-blog .byline {
+	display: inline;
+}
+
+.page-content,
+.entry-content,
+.entry-summary {
+	margin: 1.5em 0 0;
+}
+
+.page-links {
+	clear: both;
+	margin: 0 0 1.5em;
+}
+
+/*
+ *
+ * Contact Form 7
+ * Specific stylings for contact form 7
+ *
+ */
+
+.wpcf7 p {
+
+	font-weight: 200;
+	float: left;
+	width: 100%;
+}
+
+.home div.wpcf7{
+	padding-top: 24px;
+}
+@include bp(toddler){
+	.wpcf7 p.text{
+		padding-right: 15px;
+		width: 50%;
+	}
+}
+.wpcf7 input, textarea {
+	max-width: 100%;
+	width: 100%;
+	@include bp(toddler){
+		&[type="submit"]{
+			width: 200px;	
+		}
+	}
+}
+div.wpcf7-response-output{
+	border: 0px;
+	border-top: 2px solid;
+	color: #fff;
+	@include font-size(1.6,1);
+	float: left;
+	font-style: italic;
+	margin: 0 0 24px;
+	padding: 12px 1em;
+	width: 100%;
+}
+
+div.wpcf7-validation-errors{
+	border: 0px;
+	border-top: 4px solid $red;
+}
+.wpcf7-display-none{
+	display: none;
+}

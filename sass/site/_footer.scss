@@ -1,0 +1,26 @@
+.site-footer {
+	clear: both;
+	color: $grey;
+	padding: 48px 0 24px;
+	width: $size__site-main;
+	li, li a, a {
+		color: $blue;
+	}
+}
+.site-info, 
+.logo{
+	margin-bottom: 48px;
+	text-align: center;
+}
+.copyright{
+	background: $grey;
+	color: lighten($grey,20%);
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+.logo {
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 250px;
+}

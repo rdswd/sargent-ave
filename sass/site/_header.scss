@@ -1,0 +1,166 @@
+html, body{
+	background: #333;
+}
+
+#page {
+	background: #fff;
+	height: 100%;
+	position: relative;
+	top:72px;
+	z-index: 20;
+}
+
+.site-header{
+	background: rgba(255,255,255,1);
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+	height: 72px;
+	@include padding();
+	position: fixed;
+	top:0;
+	width: 100%;
+	z-index: 100;
+	& .small {
+		height: 30px;	
+	}
+}
+.logged-in .site-header {
+	margin-top: 46px;	
+}
+@media (min-width:783px){
+	.logged-in .site-header {
+		margin-top: 32px;	
+	}
+}
+.site-branding {
+	display: table;
+	float: left;
+	height: 72px;
+	position: relative;
+	width:75%;
+	@include bp(toddler){	
+		@include columns(3);
+	}
+	@include bp(toddler){
+
+	}
+	@include bp(adult){
+		@include columns(4);
+	}
+	div{
+		display: table-cell;
+		vertical-align: middle;
+	}
+}
+.site-title {
+	
+	img{
+		height: auto;
+		max-width: 150px;
+		vertical-align: top;
+		width: auto;
+		@include bp(baby){
+			height: 36px;
+			max-height: auto;
+			max-width: 100%;				
+		}
+	}
+}
+.site-description { 
+	
+}
+.entry-header,
+.page-header{
+	background: $dgrey;
+	position:relative;
+	.banner{
+		overflow: hidden;
+		position: relative;	
+		height: 432px;
+		@include bp(teen) {
+			height: 528px;
+		}
+		@include bp(adult) {
+			height: 600px;	
+		}
+	}
+	.banner-text{
+		height: 100%;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		> div{
+			display: table;
+			height: 100%;
+			width: 100%;	
+			> div{
+				display: table-cell;
+				padding-top: 24px;
+				padding-bottom: 24px;
+			}
+		}
+	}
+	figure img{
+		width: auto;
+		height: 432px;
+		opacity: 0.6;
+		vertical-align: top; 
+		max-width: 1000%;
+		left: 954px;
+		margin-left: -1908px;
+		position: relative;
+		@include bp(teen){
+			height: 528px;
+			left: 1166px;
+			margin-left: -2332px;
+		}
+		@include bp(adult){
+			height: 600px;
+			left: 1325px;
+			margin-left: -2650px;
+		}
+	}
+}
+.site-main > article .entry-header{
+	overflow: hidden;
+}
+.blog .entry-header,
+.archive .entry-header,
+.featured .entry-header{
+	background: transparent;
+	pointer-events: none;
+}
+#site-navigation h1{
+	display: table;
+	height:60px;
+	float: left;
+	padding-top: 5px;
+	img{
+		display: table-cell;
+		height: 35px;
+		vertical-align: middle;
+	}
+}
+.cell-top {
+	vertical-align: top; 
+}
+.cell-middle {
+	vertical-align: middle; 
+}
+.cell-bottom {
+	vertical-align: bottom; 
+}
+.cell-left {
+	text-align: left; 
+}
+.cell-center {
+	text-align: center; 
+}
+.cell-right {
+	text-align: right; 
+}
+@include bp(teen){
+	.site-branding article div div{
+		padding-top: 48px;
+		padding-bottom: 48px;
+	}
+}

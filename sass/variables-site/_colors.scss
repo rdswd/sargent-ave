@@ -1,0 +1,33 @@
+$color__background-body: #ffffff;
+$color__background-screen: #ffffff;
+$color__background-hr: #ffffff;
+$color__background-button: #e6e6e6;
+$color__background-pre: #333631;
+$color__background-ins: #fff9c0;
+
+$color__text-screen: #c92626;
+$color__text-input: #666;
+$color__link: #C65959;
+$color__text-input-focus: darken( $color__link, 20% );
+$color__link-visited: #c65959;
+$color__link-hover: darken( $color__link, 20% );
+$color__text-main: #000000;
+$color__text-pre: ;
+
+$color__border-button: #ccc #ccc #bbb;
+$color__border-button-hover: #ccc #bbb #aaa;
+$color__border-button-focus: #aaa #bbb #bbb;
+$color__border-input: #666;
+$color__border-abbr: #666;
+
+//Colors
+
+$grey: #677275;
+$dgrey: darken($grey, 30%);
+$lightgrey: #eeecec;
+$lgrey: #f1f0f1;
+$red: #C74F4C;
+$tan: #e6deca;
+$green: #47B0AC;
+$blue: #417799;
+$dblue: #25506B;

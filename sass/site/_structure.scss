@@ -1,0 +1,137 @@
+//frameless grid 15px gutter 60px column
+//	$bp-baby:		"(min-width: 570px)";
+//	$bp-toddler:	"(min-width: 750px)";
+//	$bp-kid:		"(min-width: 840px)";
+//	$bp-teen:		"(min-width: 930px)";
+//	$bp-adult:		"(min-width: 1200px)";
+//	$bp-badult:		"(min-width: 2000px)";
+//	$bp-giant:		"(min-width: 2199px)";
+
+.wrapper{
+	margin: 0 auto;
+	//4 column + gutter = 360px
+	/* 
+	 * Using 100% width instead of width
+	 * This breaks the frameless grid at small screens but
+	 * allows flexibility
+	 */
+	width: 100%;
+	@include bp(baby){
+		// 6 column + gutters = 540px
+		@include columns(6);
+	}
+	@include bp(toddler) {
+		// 8 column + gutters = 720px
+		@include columns(8);
+	}
+	@include bp(teen){
+		// 10 column + gutters = 900px
+		@include columns(10);
+	}
+	@include bp(adult){
+		// 12 column * gutters = 1080px
+		@include columns(12);
+	}
+}
+
+//Golden Ration in relation to the wrapper for banner-text
+@include bp(teen){
+	.banner-text .wrapper{
+		padding-right: .0955 * 900px;
+		padding-left: .0955 * 900px;
+	}
+}
+@include bp(adult){
+	.banner-text .wrapper{
+		padding-right: .0955 * 1080px;
+		padding-left: .0955 * 1080px;
+	}
+}
+.featured{
+	display: table;
+	width: 100%;
+	padding: 0;
+	.wrapper {
+		max-width: 100%;	
+	}
+	@include bp(baby){
+		padding: 48px 0 40px;	
+	}
+	@include bp(toddler){
+		padding: 72px 0 72px;
+	}
+}
+.entry-content,
+.small-feature p{
+	padding-top: 24px;
+	@include padding();
+	position: relative;
+	@include bp(toddler) {
+		@include padding(both, 2)	
+	}
+	@include bp(teen){
+		// 12 column + gutters - outer padding
+		@include padding(both, 8);
+	}
+	@include bp(adult){
+		@include padding(both, 12);
+	}
+}
+
+.site-content {
+
+}
+
+.blog .entry-content,
+.archive .entry-content,
+.featured .entry-content{
+	margin:0;
+	padding:0;
+	position: absolute;
+	top: 50%;
+	transform: translate3d(0,-50%,0);
+	-webkit-transform: translate3d(0,-50%,0);
+}
+#content{
+	background: #fff;
+}
+
+.book-form{
+	background: darken($blue,10%);
+	color: lighten($blue,25%);
+	display: table;
+	font-family: $font__main;
+	width: 100%;
+	article > p {
+		background: $blue;
+		color: lighten($blue, 30%);
+		font-size: 18px;
+		line-height: 1.33333333;
+		font-family: $font__main;
+		font-weight: 100;
+		margin-top: 24px;
+		padding: 24px 15px;
+		@include bp(teen){
+			margin-right: auto;
+			margin-left: auto;
+			// 10 column + gutters = 900px
+			@include columns(10);
+		}
+	}
+		input, textarea{
+			margin-top: 12px;	
+		}
+		a,.wpcf7 input[type="submit"]{
+			color: #fff;
+			@include transition(background, .2s, ease-in);
+		}
+		.wpcf7 input[type="submit"]{
+			background: $blue;
+			&:hover{
+				background: darken($blue,20%);	
+			}
+		}
+}
+.book-form article{
+		padding: 48px 15px;	
+	}

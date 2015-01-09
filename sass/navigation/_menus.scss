@@ -1,0 +1,276 @@
+a{
+	@include transition(color,.4s, ease-in);
+}
+
+.main-navigation {
+	display: block;
+	height: 72px;
+	@include padding(right);
+	position: relative;
+	
+	ul{
+		background: $blue;
+		display: block;	
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		right:-365px;
+		width:255px;
+		z-index: 10;
+	  ul.children{
+		  max-height:0;
+		  overflow:hidden;
+		  transition: max-height 1s ease-out;
+	  }
+	  ul.children.left{
+		  max-height:900px;
+	  }
+	  ul.children.ul-visible{
+			max-height: 900px;  
+	  }
+		ul {
+			background: darken($blue, 5%);
+			position: relative;
+			ul{
+				background: darken($blue, 10%);
+				ul{
+					background: darken($blue, 15%);
+					ul{
+						background: darken($blue, 20%);
+						
+					}
+				}
+			}
+			
+			li:first-child{
+				padding-top:0px;
+				border-top: 1px solid #ccc;	
+			}
+
+			li a{
+				padding-left: 22.5px;
+			}
+
+			:hover > a {
+			}
+
+			a:hover {
+			}
+		}
+
+	}
+	li {
+		clear:both;
+		width: 100%;
+	}
+	a {
+		border-bottom: 1px solid rgba( 255,255,255, .1);
+		display: block;
+		padding: 15px;
+		width: 100%;
+		&:hover{
+			color: $red;
+		}
+	}
+
+	li {
+		float: left;
+		font-family: $font__main;
+		font-weight: 700;
+		@include font-size(1.6,1,small,1.5);
+		position: relative;
+		text-transform: uppercase;
+		&:hover > a {
+		}
+	}
+	a {
+		color: #fff;
+		text-decoration: none;
+	}
+
+	.current_page_item a,
+	.current-menu-item a {
+		border-bottom: 2px solid $red;
+	}
+}
+/***
+ *
+ *Animation for top level menu 
+ *
+*/
+/* Show the menu when animating or visible */
+.main-navigation ul.left,
+.main-navigation ul.right{
+	top:72px;
+	transition: transform .25s ease-in-out;
+  	-webkit-transition: -webkit-transform .25s ease-in-out;
+}
+ 
+/***
+ * If the left class is present then transform
+ * the #page element 350px to the left.
+ */    
+.main-navigation ul.left{
+		transform: translate3d(-350px, 0, 0 ); /* X, Y, Z */
+ 		-webkit-transform: translate3d(-350px, 0, 0 );
+}
+ 
+/***
+ * Translate is doubled to compensate for menu-visible position. 240 won't transition anything!
+ */
+.main-navigation ul.right {
+		transform: translate3d(350px, 0, 0 ); /* X, Y, Z */
+ 		-webkit-transform: translate3d(350px, 0, 0 );
+}
+ 
+/***
+ * If the menu-visible class is present then
+ * shift the #page 350px from the right edge
+ * via position: absolute to keep it in the 
+ * open position. When .animating, .left and
+ * .right classes are not present the CSS
+ * transform does not apply to #page.
+ */
+.main-navigation ul.menu-visible{
+	top: 72px;
+	right:-15px;
+}
+
+/* Small menu */
+.menu-toggle {
+	position: absolute;
+	top: 23px;
+	right: 0px;
+}
+/***
+ * Child UL Animation
+*/
+.main-navigation ul ul.left{
+	transform: translate3d( -350px, 0, 0 );
+  	-webkit-transform: translate3d( -350px, 0, 0 );	
+}
+.main-navigation ul ul.right{
+	transform: translate3d(350px, 0, 0 ); /* X, Y, Z */
+ 	-webkit-transform: translate3d(350px, 0, 0 );
+}
+
+.main-navigation ul.ul-visible{
+	right: 0px;
+}
+@include bp(toddler) {
+	//remove top: 60px is browser is resized from mobile nav view to larger
+	.main-navigation ul.menu-visible{
+		top: auto;	
+	}
+	.menu-toggle {
+		display: none;
+	}
+	.main-navigation {
+		float:left;
+		@include columns(5);
+		.menu{
+			float: right;
+		}
+		ul ul.children{
+			max-height: 900px;
+			overflow: inherit;
+		}
+		ul {
+			background: transparent;
+			list-style: none;
+			margin: 0;
+			padding-left: 0;
+			position: relative;
+			width:auto;
+			right:auto;
+
+			ul {
+				box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+				float: left;
+				position: absolute;
+				top: 100%;
+				left: -999em;
+				z-index: 99999;
+
+				ul {
+					left: -999em;
+					top:100%;
+				}
+
+				li {
+					&:hover > ul {
+						left:100%;
+						top:0;
+					}
+				}
+
+				a {
+					width: 200px;
+				}
+
+				:hover > a {
+				}
+
+				a:hover {
+				}
+			}
+
+			li:hover > ul {
+				left: auto;
+			}
+		}
+		li {
+			clear: none;
+			float: left;
+			position: relative;
+			width: auto;
+			&:hover > a {
+			}
+		}
+		a {
+			color: $dblue;
+			display: block;
+			border-bottom: 0px solid;
+			padding: 28px 15px 20px;
+			text-decoration: none;
+		}
+
+		.current_page_item > a,
+		.current-menu-item > a,
+		.current_page_ancestor > a {
+						border-bottom: 5px solid $red;
+		}
+	}
+}
+@include bp(teen){
+	.main-navigation{
+		@include columns(7);	
+	}
+}
+@include bp(adult){
+	.main-navigation{
+		@include columns(8);	
+	}
+}
+.site-main .comment-navigation,
+.site-main .paging-navigation,
+.site-main .post-navigation {
+	margin: 0 0 1.5em;
+	overflow: hidden;
+}
+
+.comment-navigation .nav-previous,
+.paging-navigation .nav-previous,
+.post-navigation .nav-previous {
+	float: left;
+	width: 50%;
+}
+
+.comment-navigation .nav-next,
+.paging-navigation .nav-next,
+.post-navigation .nav-next {
+	float: right;
+	text-align: right;
+	width: 50%;
+}

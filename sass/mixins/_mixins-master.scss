@@ -1,0 +1,148 @@
+// Horizontal padding
+@mixin padding($sides: both,$multiple: 1){
+	@if $sides == both{
+		padding-right: 15px * $multiple;
+		padding-left: 15px * $multiple;
+	} @else if $sides == right{
+		padding-right: 15px * $multiple;	
+	} @else if $sides == left {
+		padding-left: 15px * $multiple;
+	}
+}
+@mixin columns($amount){
+	$totalcolumnwidth: $amount * ($gutter + $column + $gutter);
+	width: $totalcolumnwidth;
+}
+@mixin column-margin($amount, $sides){
+	$totalcolumnwidth: $amount * ($gutter + $column + $gutter);
+	@if $sides == left{
+		margin-left: $totalcolumnwidth;
+	} @else if $sides == right{
+		margin-right: $totalcolumnwidth;			
+	} @else if $sides == both{
+		margin-left: $totalcolumnwidth;
+		margin-right: $totalcolumnwidth;
+	}
+}
+@mixin column-size($amount){
+	$totalcolumnwidth: $amount * ($gutter + $column + $gutter);
+	$totalminusexistinggutters: $totalcolumnwidth - (2 * $gutter);
+	return: $totalminusexistinggutters;
+}
+// Breakpoints
+@mixin bp($point) {
+	$bp-baby:		"(min-width: 570px)";
+	$bp-toddler:	"(min-width: 750px)";
+	$bp-kid:		"(min-width: 840px)";
+	$bp-teen:		"(min-width: 930px)";
+	$bp-adult:		"(min-width: 1200px)";
+	$bp-badult:		"(min-width: 1700px)";
+	$bp-giant:		"(min-width: 2199px)";
+
+	
+	@if $point == baby {
+		@media #{$bp-baby} { @content; }
+	}
+	@else if $point == toddler {
+		@media #{$bp-toddler} { @content; }
+	}
+	@else if $point == kid {
+		@media #{$bp-kid}  { @content; }
+	}
+	@if $point == teen {
+		@media #{$bp-teen} { @content; }
+	}
+	@else if $point == adult {
+		@media #{$bp-adult} { @content; }
+	}
+	@else if $point == badult {
+		@media #{$bp-badult}  { @content; }
+	}
+	@else if $point == giant {
+		@media #{$bp-giant}  { @content; }
+	}
+	
+}
+
+// Rem output with px fallback
+@mixin font-size($sizeValue: 1.6, $exponent: 0, $small: null, $manual-line-height: null) {
+	@if $small == small {
+		$sizeValue: $sizeValue / font-ratio( $exponent );
+	} @else {
+		$sizeValue: $sizeValue * font-ratio( $exponent );
+	}
+	$heightValue: $font__line-height-body;
+	font-size: ($sizeValue * 10) + px;
+	font-size: $sizeValue + rem;
+	@if $manual-line-height == null {
+		line-height: line-height($sizeValue);
+	} @else {
+		line-height: $manual-line-height;
+	}
+}
+
+// Use the division of the vertical rhythm ($font__line-height-body) nearest whole function by the font-size to create a line-height.
+@function line-height( $basefontsize ){
+    $basefontsize: $basefontsize * 10;
+    $baselineheight: 24;
+    @if $basefontsize < $baselineheight {
+        @return $baselineheight / $basefontsize;   
+    } @else {
+        @while $basefontsize > $baselineheight {
+            $baselineheight: $baselineheight + 24;   
+        }
+        @return $baselineheight / $basefontsize;
+    }
+}
+// Use Ratio to generate font-sizes by simple to-the-power-of function
+@function font-ratio( $exponent: 0 ){
+    $result: $font__ratio;
+    @if $exponent > 0 {
+        @for $i from 1 to $exponent {
+            $result: $result * $font__ratio;
+        }
+        @return $result;
+    } @else {
+        @return 1;   
+    }
+}
+
+// Box model
+@mixin box-sizing($box-model) {
+  	box-sizing: $box-model;
+  	-moz-box-sizing: $box-model; // Firefox <= 19
+	-webkit-box-sizing: $box-model; // Safari <= 5
+}
+
+// Border radius
+@mixin border-radius($radius) {
+  	background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+  	border-radius: $radius;
+  	-webkit-border-radius: $radius;
+}
+
+// Center block
+@mixin center-block {
+  	display: block;
+  	margin: 0 auto;
+}
+
+// Clearfix
+@mixin clearfix() {
+    content: "";
+    display: table;
+}
+
+// Center after (not all clearfix need this also)
+@mixin clearfix-after() {
+    clear: both;
+}
+
+//transitions
+@mixin transition($transition-property, $transition-time, $method) {
+    -webkit-transition: $transition-property $transition-time $method;
+    -moz-transition: $transition-property $transition-time $method;
+    -ms-transition: $transition-property $transition-time $method;
+    -o-transition: $transition-property $transition-time $method;
+    transition: $transition-property $transition-time $method;
+}

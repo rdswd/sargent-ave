@@ -1,0 +1,172 @@
+.site-content .banner-text p{
+	color: #ffffff;
+	font-size: 24px;
+	font-size: 2.4rem;
+	line-height: 1.0;
+	font-weight: 100;
+	margin: 0;
+	@include padding();
+	@include bp(teen){
+		@include font-size(1.6,3,null,1.30208333333);
+	}
+}
+.site-content .banner-text p:first-of-type{
+	margin-top: 24px;
+}
+
+p {
+	margin-bottom: 24px;
+}
+.entry-content > p:first-of-type,
+blockquote p{
+	// line-height too small if 24px / font-size. So added 6px to 24px so it will resolve every four lines to  24px * 4
+	@include font-size(1.6,1);
+	@include bp(toddler){
+		@include column-margin(-1/3, both);
+	}	
+	@include bp(teen){
+		@include column-margin(-1, both);		
+	}
+	@include bp(adult){
+		@include column-margin(-2, both);
+	}
+
+}
+.entry-content > p:first-of-type {
+	font-weight: 100;
+	@include bp(toddler){
+		@include font-size(1.6,2,null, 1.302083333);
+	}
+	@include bp(adult){
+		@include font-size(1.6,3,null,1.30208333);
+	}
+	@include bp(badult){
+		@include font-size(1.6,4,null,1.08506944);	
+	}
+}
+blockquote p{
+	background: #eeecec;
+	border-right: 5px solid $red;
+	font-family: $font__secondary;
+	font-weight: 700; 
+	padding: 24px 30px;
+	@include bp(badult){
+		@include font-size(1.6,3,null,1.08506944);	
+	}	
+	
+}
+.featured .hentry p{
+	font-family: $font__secondary;
+	font-weight: 100;
+	@include font-size(1.6);	
+	margin: auto;
+	@include bp(teen){
+		@include font-size(1.6,1);
+	}
+}
+.site-content .small-feature p{
+	@include font-size(1.6,1);
+	text-align: center;
+	font-weight: 100;
+	@include bp(teen){
+		@include font-size(1.6,3,null,1.30208333333);	
+	}
+	@include bp(badult){
+		@include font-size(1.6,4);	
+	}
+}
+b, strong {
+	font-weight: bold;
+}
+
+dfn, cite, em, i {
+	font-style: italic;
+}
+
+blockquote {
+	font-family: $font__main;
+}
+
+address {
+	margin: 0 0 1.5em;
+}
+
+pre {
+	background: $color__background-pre;
+    color: $color__text-pre;
+	font-family: $font__pre;
+	@include font-size(1.5);
+	line-height: $font__line-height-pre;
+	margin-bottom: 1.6em;
+	max-width: 100%;
+	overflow: auto;
+	padding: 1.6em;
+}
+
+code, kbd, tt, var {
+	@include font-size(1.5);
+	font-family: $font__code;
+}
+
+abbr, acronym {
+	border-bottom: 1px dotted $color__border-abbr;
+	cursor: help;
+}
+
+mark, ins {
+	background: $color__background-ins;
+	text-decoration: none;
+}
+
+sup,
+sub {
+	font-size: 75%;
+	height: 0;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	bottom: 1ex;
+}
+
+sub {
+	top: .5ex;
+}
+
+small {
+	font-size: 75%;
+}
+
+big {
+	font-size: 125%;
+}
+.site-content .widget-area{
+	p, li{
+		font-family: $font__main;
+		@include font-size(1.6,1,small);
+	}
+	ul{
+		list-style: none;
+		margin: 0;
+	}
+	li{
+		
+	}
+}
+@include bp(adult){
+	p,
+	li{
+		@include font-size(1.8);	
+	}
+	.site-content li{
+		padding: 8px 0 0;	
+	}
+}
+.site-footer{
+	font-family: $font__main;
+}
+.site-info{
+	font-weight: 100;
+}

@@ -1,0 +1,16 @@
+a {
+	color: $red;
+	text-decoration: none;
+
+	&:visited {
+		color: $color__link-visited;
+	}
+	&:hover,
+	&:focus,
+	&:active {
+		color: $color__link-hover;
+	}
+}
+.site-content a > p{
+	text-decoration: underline;
+}
